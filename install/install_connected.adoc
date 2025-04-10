@@ -5,32 +5,8 @@
 
 Install {acm} through {olm}, which manages the installation, upgrade, and removal of the components that encompass the {acm-short} hub cluster. Because {acm-short} depends on and uses the {mce-short}, after you create the `MultiClusterHub` resource during installation, the {acm-short} operator automatically installs the {mce-short} operator and creates the `MultiClusterEngine` resource. 
 
-You must have a supported version of {ocp-short} to install {acm-short}.
-
-*Required access:* Cluster administrator
-
-*{ocp-short} Dedicated environment required access:* You need `cluster-admin` permissions. By default the `dedicated-admin` role does not have the required permissions to create namespaces in the {ocp-short} Dedicated environment. 
-
-*Notes:*
-
-- By default, the hub cluster components are installed on worker nodes of your {ocp-short} cluster without any additional configuration. You can install the hub cluster on worker nodes by using the {ocp-short} OperatorHub web console interface, or by using the {ocp-short} CLI.
-
-- If you have configured your {ocp-short} cluster with infrastructure nodes, you can install the hub cluster on those infrastructure nodes by using the {ocp-short} CLI with additional resource parameters. See the _Installing the {acm-short} hub cluster on infrastructure node_ section for more details.
-
-- If you plan to import Kubernetes clusters that are not {ocp-short} or {acm-short} clusters, you need to configure an image pull secret. 
-
-- If you previously installed {acm-short} on a cluster, then uninstalled, you need to follow the clean up procedure to remove artifacts. See xref:../install/cleanup_reinstall.adoc#cleanup-reinstall[Cleaning up artifacts before reinstalling] and follow the procedure.
-
-For information on how to configure advanced configurations, see options in the xref:../install/adv_config_install.adoc#advanced-config-hub[MultiClusterHub advanced configuration] section of the documentation. 
-
-* <<connect-prerequisites,Prerequisites>>
-* <<confirm-ocp-installation,Confirm your {ocp-short} installation>>
-* <<installing-from-the-operatorhub,Installing from the OperatorHub web console interface>>
-* <<installing-from-the-cli,Installing from the {ocp-short} CLI>>
-
 [#connect-prerequisites]
 == Prerequisites
-//Brandi, I tried to build without the ID and the build failed because the ID is used as an XREF. I need to check with Jaromir about the extra ID in a module or assembly.
 Before you install {acm-short}, see the following requirements:
 
 * Your {ocp} cluster must have access to the {acm-short} operator in the OperatorHub catalog from the {ocp-short} console. 
@@ -54,12 +30,10 @@ Before you install {acm-short}, see the following requirements:
 ** To import, you must use the `stable-2.0` channel of the klusterlet operator for {product-version}.
 
 :_mod-docs-content-type: PROCEDURE
-[#confirm-ocp-installation]
-== Confirm your {ocp-short} installation
 
-Verify that a {acm-short} hub cluster is not already installed on your {ocp-short} cluster. You cannot have more than one hub cluster. 
+* Verify that a {acm-short} hub cluster is not already installed on your {ocp-short} cluster. You cannot have more than one hub cluster. 
 
-You can only have one single {acm-short} hub cluster installation on each {ocp-short} cluster. Continue with the following steps if there is no {acm-short} hub cluster installed.
+* You can only have one single {acm-short} hub cluster installation on each {ocp-short} cluster. Continue with the following steps if there is no {acm-short} hub cluster installed.
 
 .Procedure
 . To ensure that the {ocp-short} cluster is set up correctly, access the {ocp-short} web console with the following command:
